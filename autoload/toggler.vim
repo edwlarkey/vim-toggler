@@ -1,5 +1,7 @@
-let s:options = {}
+" plugin/toggler.vim
+" Author: Edward Larkey
 
+let s:options = {}
 
 let s:options['toggleables'] = [
   \ ['Positive', 'Negative'],
@@ -25,7 +27,7 @@ function! s:searchLists(list)
   endfor
 endfunction
 
-function! Toggle()
+function! toggler#Toggle()
   let l:line = getline('.')
 
   let [l:index, l:index_item] = s:searchLists(s:options['toggleables'])
@@ -45,7 +47,3 @@ function! Toggle()
   let l:line = substitute(l:line, l:find, l:replace, "")
   call setline('.', line)
 endfunction
-
-nnoremap <silent> <Plug>Toggle     :<C-U>call <SID>Toggle()<CR>
-
-nnoremap <silent> <F7> :call Toggle()<CR>
