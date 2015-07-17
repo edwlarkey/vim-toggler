@@ -1,0 +1,22 @@
+*toggler.txt*  Easy toggling between sets of keywords
+
+Author:  Edward Larkey <http://edwlarkey.com/>
+Repo:    https://github.com/edwlarkey/vim-toggler
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                           *toggler*
+
+This plugin makes it easier to toggle between different sets of keywords. E.g.
+[TODO, DOING, DONE], [YES, NO], [TRUE, FALSE], etc.
+
+Inspiration came from Org Mode. I didn't really need all of the functionality
+that it provided, but I did like how it could toggle between TODO and DONE for
+tasks.
+
+COMMANDS                                                 *toggler-commands*
+
+There are no default mappings. There is simply one command.
+
+:Toggle           Toggles to next keyword.
+
+ vim:tw=78:et:ft=help:norl:
