@@ -1,15 +1,6 @@
 " plugin/toggler.vim
 " Author: Edward Larkey
 
-let s:options = {}
-
-let s:options['toggleables'] = [
-  \ ['Positive', 'Negative'],
-  \ ['TODO', 'DOING', 'DONE'],
-  \ ['TRUE', 'FALSE'],
-  \ ['YES', 'NO'],
-  \ ['[]', '[x]'],
-  \]
 
 function! s:searchLine(query)
   return match(getline('.'), '\s*'.a:query)
@@ -25,25 +16,30 @@ function! s:searchLists(list)
       endif
     endfor
   endfor
+  return 0
 endfunction
 
 function! toggler#Toggle()
   let l:line = getline('.')
 
-  let [l:index, l:index_item] = s:searchLists(s:options['toggleables'])
+  let l:matches = s:searchLists(g:toggler_keywords)
 
-  let l:max_index = (len(s:options['toggleables'][l:index]) - 1)
+  if type(l:matches) == type([])
+    let [l:index, l:index_item] = l:matches
 
-  let l:find = get(s:options['toggleables'][l:index], l:index_item)
+    let l:max_index = (len(g:toggler_keywords[l:index]) - 1)
 
-  let l:index_item = l:index_item + 1
+    let l:find = get(g:toggler_keywords[l:index], l:index_item)
 
-  if l:index_item > l:max_index
-    let l:index_item = 0
+    let l:index_item = l:index_item + 1
+
+    if l:index_item > l:max_index
+      let l:index_item = 0
+    endif
+
+    let l:replace = get(g:toggler_keywords[l:index], l:index_item)
+
+    let l:line = substitute(l:line, l:find, l:replace, "")
+    call setline('.', line)
   endif
-
-  let l:replace = get(s:options['toggleables'][l:index], l:index_item)
-
-  let l:line = substitute(l:line, l:find, l:replace, "")
-  call setline('.', line)
 endfunction
