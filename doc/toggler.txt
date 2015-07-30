@@ -19,4 +19,34 @@ There are no default mappings. There is simply one command.
 
 :Toggle           Toggles to next keyword.
 
+CONFIG                                                   *toggler-config*
+
+Lists of keywords can be set in your vimrc.
+
+The default set of keywords are:
+
+>
+  let g:toggler_keywords = [
+    \ ['TODO', 'DOING', 'DONE'],
+    \ ['Positive', 'Negative'],
+    \ ['True', 'False'],
+    \ ['YES', 'NO'],
+    \ ['\[ \]', '\[x\]'],
+    \]
+<
+
+
+This is what I use in my vimrc. I have a modified set of keywords as well as
+<leader>t mapped to :Toggle
+
+>
+  :nnoremap <leader>t :Toggle<CR>
+
+  let g:toggler_keywords = [
+    \ ['TODO', 'DOING', 'DONE'],
+    \ ['YES', 'NO'],
+    \ ['\[ \]', '\[x\]'],
+    \]
+<
+
  vim:tw=78:et:ft=help:norl:
