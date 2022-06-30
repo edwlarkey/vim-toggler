@@ -1,3 +1,5 @@
+Moved to [https://git.sr.ht/~edwlarkey/vim-toggler](https://git.sr.ht/~edwlarkey/vim-toggler)
+
 # Toggler
 
 Easy toggling between sets of keywords
